@@ -26,7 +26,7 @@ interface CandyMachineState {
   itemsRemaining: number;
   treasury: anchor.web3.PublicKey;
   tokenMint: anchor.web3.PublicKey;
-  isSoldOut: null;
+  isSoldOut: boolean;
   isActive: boolean;
   goLiveDate: anchor.BN;
   price: anchor.BN;
