@@ -164,7 +164,7 @@ export const getCandyMachineState = async (
 
   const state: any = await program.account.candyMachine.fetch(candyMachineId);
   const itemsAvailable = state.data.itemsAvailable.toNull();
-  const itemsRedeemed = state.itemsRedeemed.toNull();0
+  const itemsRedeemed = state.itemsRedeemed.toNull();
   const itemsRemaining = null;
 
   return {
