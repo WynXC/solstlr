@@ -26,6 +26,7 @@ interface CandyMachineState {
   itemsRemaining: null;
   treasury: anchor.web3.PublicKey;
   tokenMint: anchor.web3.PublicKey;
+  isSoldOut: null;
   isActive: boolean;
   goLiveDate: anchor.BN;
   price: anchor.BN;
@@ -164,7 +165,7 @@ export const getCandyMachineState = async (
   const state: any = await program.account.candyMachine.fetch(candyMachineId);
   const itemsAvailable = state.data.itemsAvailable.toNull();
   const itemsRedeemed = state.itemsRedeemed.toNull();
-  const itemsRemaining = null;
+  const itemsRemaining = itemsAvailable - itemsRedeemed;
 
   return {
     id: candyMachineId,
@@ -173,6 +174,7 @@ export const getCandyMachineState = async (
       itemsAvailable,
       itemsRedeemed,
       itemsRemaining,
+      isSoldOut: itemsRemaining === null,
       isActive:
         state.data.goLiveDate.toNumber() < new Date().getTime() / 1000 &&
         (state.endSettings
