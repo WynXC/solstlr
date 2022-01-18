@@ -130,7 +130,7 @@ export const MintButton = ({
         'Mint Paused'
 
       ) :  (
-        'MINT'
+        'MINT(0.79SOL)'
       )}
       </div>
     </CTAButton>
