@@ -174,7 +174,6 @@ export const getCandyMachineState = async (
       itemsAvailable,
       itemsRedeemed,
       itemsRemaining,
-      isSoldOut: itemsRemaining === 0,
       isActive:
         state.data.goLiveDate.toNumber() < new Date().getTime() / 1000 &&
         (state.endSettings
